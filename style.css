@@ -69,3 +69,17 @@ body.matrix-theme .about-content a{color:#00ff41!important;}
 body.matrix-theme .about-note,body.matrix-theme .solution-hint,body.matrix-theme .solution-controls span{color:#00ff41!important;}
 body.matrix-theme .solution-preview{background:#000!important;border:1px solid #00ff41!important;}
 body.matrix-theme .error-text{color:#00ff41!important;}
+
+
+/* Matrix: chuva atrás da área jogável, mantendo paredes, caixas e personagem legíveis. */
+body.matrix-theme #matrixRain{
+ position:fixed!important;top:54px!important;left:0!important;width:100vw!important;height:calc(100dvh - 54px)!important;
+ z-index:2!important;pointer-events:none!important;background:transparent!important;display:block!important;
+}
+body.matrix-theme .window{position:relative!important;z-index:1!important;background:#000!important;}
+body.matrix-theme .titlebar,body.matrix-theme .menubar{z-index:5!important;position:relative!important;}
+body.matrix-theme .content{position:relative!important;z-index:1!important;background:transparent!important;isolation:isolate;}
+body.matrix-theme .board-shell{position:relative!important;z-index:3!important;background:rgba(0,0,0,.18)!important;border:1px solid #00ff41!important;}
+body.matrix-theme #board{position:relative!important;z-index:3!important;background:transparent!important;}
+body.matrix-theme #board .tile{position:relative!important;z-index:3!important;opacity:.88!important;}
+body.matrix-theme .top,body.matrix-theme .toolbar,body.matrix-theme .message,body.matrix-theme footer{position:relative;z-index:3;}
