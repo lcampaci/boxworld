@@ -24,6 +24,21 @@ dialog{padding:3px;background:#c0c0c0;border:2px solid;border-color:#fff #404040
 .menu-item{position:relative;height:100%;display:flex;align-items:center}.dropdown-menu{display:none;position:absolute;z-index:1000;top:100%;left:0;min-width:225px;padding:3px;background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px 0 #222}.dropdown-menu.open{display:block}.dropdown-menu button{display:block;width:100%;min-height:27px;text-align:left;padding:5px 22px 5px 10px;background:transparent;border:0;white-space:nowrap;font:12px Tahoma,Arial,sans-serif}.dropdown-menu button:hover,.dropdown-menu button:focus{background:#000080;color:#fff;outline:none}.menu-separator{height:1px;margin:3px 2px;background:#808080;border-bottom:1px solid #fff}.menu-item:has(.dropdown-menu.open) > #gameMenu{background:#000080;color:#fff}
 
 #matrixRain{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:none;background:#000}
+body.matrix-theme{background:#000!important;color:#00ff41!important}
+body.matrix-theme #matrixRain{display:block}
+body.matrix-theme .window,body.matrix-theme .content,body.matrix-theme .game-window,body.matrix-theme main,body.matrix-theme .main,
+body.matrix-theme .board-shell,body.matrix-theme .game-area,body.matrix-theme .statusbar,body.matrix-theme .toolbar{
+ background-color:rgba(0,0,0,.72)!important;color:#00ff41!important;border-color:#087f28!important
+}
+body.matrix-theme .tile{filter:grayscale(1) sepia(1) saturate(10) hue-rotate(70deg) brightness(.9) contrast(1.25)}
+body.matrix-theme button,body.matrix-theme input,body.matrix-theme select,body.matrix-theme textarea{
+ background:#001b08!important;color:#00ff41!important;border-color:#087f28!important
+}
+body.matrix-theme img:not(.tile){filter:grayscale(1) sepia(1) saturate(10) hue-rotate(70deg) brightness(.9) contrast(1.15)}
+body.matrix-theme *{scrollbar-color:#00a82b #001000}
+body.matrix-theme .window{position:relative;z-index:1;background:rgba(0,0,0,.62)!important}
+body.matrix-theme .content{background:rgba(0,0,0,.58)!important}
+body.matrix-theme .board-shell{position:relative;z-index:1;background:rgba(0,0,0,.55)!important}
 body.matrix-theme .window{position:relative;z-index:1;background:rgba(0,0,0,.72)!important}
 body.matrix-theme .content{background:rgba(0,0,0,.72)!important}
 body.matrix-theme .board-shell{position:relative;z-index:1}

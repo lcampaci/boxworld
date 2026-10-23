@@ -97,7 +97,7 @@ function setupMatrixRain(){
  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;columns=Array(Math.ceil(canvas.width/fontSize)).fill(1);}
  function draw(){
   if(document.body.classList.contains("matrix-theme")){
-   ctx.fillStyle="rgba(0,0,0,0.08)";ctx.fillRect(0,0,canvas.width,canvas.height);
+   ctx.fillStyle="rgba(0,0,0,0.045)";ctx.fillRect(0,0,canvas.width,canvas.height);
    ctx.fillStyle="#00ff41";ctx.font=fontSize+"px monospace";
    for(let i=0;i<columns.length;i++){const ch=String.fromCharCode(0x30A0+Math.random()*96);ctx.fillText(ch,i*fontSize,columns[i]*fontSize);if(columns[i]*fontSize>canvas.height&&Math.random()>0.975)columns[i]=0;columns[i]++;}
   } else {ctx.clearRect(0,0,canvas.width,canvas.height);}
