@@ -43,3 +43,29 @@ body.matrix-theme .window{position:relative;z-index:1;background:rgba(0,0,0,.72)
 body.matrix-theme .content{background:rgba(0,0,0,.72)!important}
 body.matrix-theme .board-shell{position:relative;z-index:1}
 body.matrix-theme .tile{position:relative;z-index:2}
+
+
+/* Ajustes finais do tema Matrix: chuva em toda a área da janela, exceto cabeçalho e tabuleiro. */
+body.matrix-theme #matrixRain{position:fixed;top:27px;left:0;width:100%;height:calc(100% - 27px);z-index:2;pointer-events:none;background:transparent;}
+body.matrix-theme .window{position:relative;z-index:1;background:#000!important;color:#00ff41!important;}
+body.matrix-theme .titlebar{position:relative;z-index:4;background:#001b08!important;color:#00ff41!important;border-bottom:1px solid #00ff41!important;}
+body.matrix-theme .menubar{position:relative;z-index:4;background:#000!important;color:#00ff41!important;border-color:#00ff41!important;}
+body.matrix-theme .menubar button,body.matrix-theme #gameMenu,body.matrix-theme #levelsMenu,body.matrix-theme #helpMenu,body.matrix-theme #aboutMenu{background:#000!important;color:#00ff41!important;border:1px solid #087f28!important;}
+body.matrix-theme .menubar button:hover,body.matrix-theme .dropdown-menu button:hover,body.matrix-theme .dropdown-menu button:focus{background:#003b12!important;color:#00ff41!important;}
+body.matrix-theme .content{position:relative;z-index:1;background:rgba(0,0,0,.12)!important;color:#00ff41!important;}
+body.matrix-theme .top,body.matrix-theme .message,body.matrix-theme footer,body.matrix-theme footer span{color:#00ff41!important;background:transparent!important;border-color:#00ff41!important;}
+body.matrix-theme .board-shell{position:relative;z-index:3;background:#000!important;border:1px solid #00ff41!important;}
+body.matrix-theme #board,body.matrix-theme #solutionBoard{background:#000!important;}
+body.matrix-theme .toolbar{position:relative;z-index:3;background:#000!important;}
+body.matrix-theme .toolbar button,body.matrix-theme #winNext{background:#001b08!important;color:#00ff41!important;border:1px solid #00ff41!important;}
+body.matrix-theme dialog{position:relative;z-index:10;background:#000!important;color:#00ff41!important;border:2px solid #00ff41!important;box-shadow:0 0 12px #00ff41!important;}
+body.matrix-theme dialog::backdrop{background:rgba(0,0,0,.78)!important;}
+body.matrix-theme .dlg-title{background:#001b08!important;color:#00ff41!important;border-bottom:1px solid #00ff41!important;}
+body.matrix-theme .dlg-title button,body.matrix-theme .game-options button,body.matrix-theme .dialog-actions button,body.matrix-theme #levelGrid button,body.matrix-theme .solution-controls button{background:#001b08!important;color:#00ff41!important;border:1px solid #00ff41!important;}
+body.matrix-theme .dropdown-menu{background:#000!important;border:1px solid #00ff41!important;box-shadow:0 0 8px #00ff41!important;}
+body.matrix-theme .dropdown-menu button{color:#00ff41!important;background:#000!important;}
+body.matrix-theme .menu-separator,body.matrix-theme .about-content hr{background:#00ff41!important;border-color:#00ff41!important;}
+body.matrix-theme .about-content a{color:#00ff41!important;}
+body.matrix-theme .about-note,body.matrix-theme .solution-hint,body.matrix-theme .solution-controls span{color:#00ff41!important;}
+body.matrix-theme .solution-preview{background:#000!important;border:1px solid #00ff41!important;}
+body.matrix-theme .error-text{color:#00ff41!important;}
