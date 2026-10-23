@@ -9,7 +9,11 @@ const UNLOCK_ALL_KEY="boxworld_all_levels_unlocked_v1";
 const secretDialog=document.getElementById("secretDialog");
 const cheatDialog=document.getElementById("cheatDialog");
 let wallCheatEnabled=false,wallModifierHeld=false;
-let masterCheatsUnlocked=localStorage.getItem("boxworld_master_cheats_v1")==="1";
+let masterCheatsUnlocked=false;
+try {
+ masterCheatsUnlocked = localStorage.getItem("boxworld_master_cheats_v1")==="1"
+  || localStorage.getItem("boxworld_master_cheats_unlocked")==="1";
+} catch (_) {}
 let teleportCheatEnabled=false,teleportClickArmed=false;
 let allLevelsUnlocked=localStorage.getItem(UNLOCK_ALL_KEY)==="1";
 // Altere esta senha para outra de sua preferência.
@@ -130,11 +134,17 @@ function applyCheat(code){
  }
  if(normalized==="#bwmestre"){
   masterCheatsUnlocked=true;
-  try{localStorage.setItem("boxworld_master_cheats_v1","1");}catch(_){}
-  cheatDialog.close(); message.textContent="Cheat Mestre ativado: cheats #bw01 a #bw05 liberados."; return;
+  try{
+   localStorage.setItem("boxworld_master_cheats_v1","1");
+   localStorage.setItem("boxworld_master_cheats_unlocked","1");
+  }catch(_){}
+  document.getElementById("cheatError").textContent="";
+  cheatDialog.close();
+  message.textContent="CHEAT MESTRE ATIVADO! Cheats #bw01, #bw02, #bw03, #bw04 e #bw05 liberados.";
+  return;
  }
  if(["#bw01","#bw02","#bw03","#bw04","#bw05"].includes(normalized) && !masterCheatsUnlocked){
-  document.getElementById("cheatError").textContent="Ative primeiro o Cheat Mestre com #bwmestre.";
+  document.getElementById("cheatError").textContent="Cheats bloqueados. Digite #bwmestre primeiro.";
   document.getElementById("cheatCodeInput").select(); return;
  }
  if(normalized==="#bw01"){
