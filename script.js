@@ -9,6 +9,7 @@ const UNLOCK_ALL_KEY="boxworld_all_levels_unlocked_v1";
 const secretDialog=document.getElementById("secretDialog");
 const cheatDialog=document.getElementById("cheatDialog");
 let wallCheatEnabled=false,wallModifierHeld=false;
+let masterCheatsUnlocked=localStorage.getItem("boxworld_master_cheats_v1")==="1";
 let teleportCheatEnabled=false,teleportClickArmed=false;
 let allLevelsUnlocked=localStorage.getItem(UNLOCK_ALL_KEY)==="1";
 // Altere esta senha para outra de sua preferência.
@@ -88,6 +89,26 @@ function startSolution(){
 function advanceSolution(){if(solutionIndex>=solutionMoves.length)return;applySolutionMove(solutionState,solutionMoves[solutionIndex++]);renderSolutionPreview();}
 function playSolutionPreview(){if(playTimer!==null){stopSolution();return;}if(solutionIndex>=solutionMoves.length){solutionIndex=0;solutionState=parseLevel(LEVELS[current]);renderSolutionPreview();}document.getElementById("solutionPlayBtn").textContent="■ Pausar";const tick=()=>{if(!solutionDialog.open||solutionIndex>=solutionMoves.length){stopSolution();return;}advanceSolution();playTimer=setTimeout(tick,220);};tick();}
 
+// Chuva digital Matrix (fundo decorativo, sem interferir nos cliques do jogo).
+function setupMatrixRain(){
+ let canvas=document.getElementById("matrixRain");
+ if(!canvas){canvas=document.createElement("canvas");canvas.id="matrixRain";canvas.setAttribute("aria-hidden","true");document.body.prepend(canvas);}
+ const ctx=canvas.getContext("2d");let columns=[],fontSize=14,raf=0;
+ function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;columns=Array(Math.ceil(canvas.width/fontSize)).fill(1);}
+ function draw(){
+  if(document.body.classList.contains("matrix-theme")){
+   ctx.fillStyle="rgba(0,0,0,0.08)";ctx.fillRect(0,0,canvas.width,canvas.height);
+   ctx.fillStyle="#00ff41";ctx.font=fontSize+"px monospace";
+   for(let i=0;i<columns.length;i++){const ch=String.fromCharCode(0x30A0+Math.random()*96);ctx.fillText(ch,i*fontSize,columns[i]*fontSize);if(columns[i]*fontSize>canvas.height&&Math.random()>0.975)columns[i]=0;columns[i]++;}
+  } else {ctx.clearRect(0,0,canvas.width,canvas.height);}
+  raf=requestAnimationFrame(draw);
+ }
+ window.addEventListener("resize",resize);resize();draw();
+ const active=localStorage.getItem("boxworld_matrix_theme_v1")==="1";
+ document.body.classList.toggle("matrix-theme",active);canvas.style.display=active?"block":"none";
+}
+setupMatrixRain();
+
 function showCheatDialog(){
  if(document.querySelector("dialog[open]"))return;
  document.getElementById("cheatError").textContent="";
@@ -97,6 +118,25 @@ function showCheatDialog(){
 }
 function applyCheat(code){
  const normalized=code.trim().toLowerCase();
+ if(normalized==="#theme1" || normalized==="#theme0"){
+  const active=normalized==="#theme1";
+  document.body.classList.toggle("matrix-theme",active);
+  localStorage.setItem("boxworld_matrix_theme_v1",active?"1":"0");
+  const canvas=document.getElementById("matrixRain");
+  if(canvas) canvas.style.display=active?"block":"none";
+  cheatDialog.close();
+  message.textContent=active?"Tema Matrix ativado.":"Tema original restaurado.";
+  return;
+ }
+ if(normalized==="#bwmestre"){
+  masterCheatsUnlocked=true;
+  try{localStorage.setItem("boxworld_master_cheats_v1","1");}catch(_){}
+  cheatDialog.close(); message.textContent="Cheat Mestre ativado: cheats #bw01 a #bw05 liberados."; return;
+ }
+ if(["#bw01","#bw02","#bw03","#bw04","#bw05"].includes(normalized) && !masterCheatsUnlocked){
+  document.getElementById("cheatError").textContent="Ative primeiro o Cheat Mestre com #bwmestre.";
+  document.getElementById("cheatCodeInput").select(); return;
+ }
  if(normalized==="#bw01"){
   cheatDialog.close(); startSolution(); return;
  }

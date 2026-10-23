@@ -23,19 +23,8 @@ dialog{padding:3px;background:#c0c0c0;border:2px solid;border-color:#fff #404040
 /* Menu suspenso clássico do Windows para a opção Jogo */
 .menu-item{position:relative;height:100%;display:flex;align-items:center}.dropdown-menu{display:none;position:absolute;z-index:1000;top:100%;left:0;min-width:225px;padding:3px;background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;box-shadow:2px 2px 0 #222}.dropdown-menu.open{display:block}.dropdown-menu button{display:block;width:100%;min-height:27px;text-align:left;padding:5px 22px 5px 10px;background:transparent;border:0;white-space:nowrap;font:12px Tahoma,Arial,sans-serif}.dropdown-menu button:hover,.dropdown-menu button:focus{background:#000080;color:#fff;outline:none}.menu-separator{height:1px;margin:3px 2px;background:#808080;border-bottom:1px solid #fff}.menu-item:has(.dropdown-menu.open) > #gameMenu{background:#000080;color:#fff}
 
-/* Tema Matrix retrô: mantém o layout e recolore toda a interface */
-body.matrix-theme{background:#000!important;color:#00ff41!important}
-body.matrix-theme .window,body.matrix-theme .content{background:rgba(0,0,0,.88)!important;color:#00ff41!important}
-body.matrix-theme .titlebar{background:#001b08!important;color:#00ff41!important;border-bottom:1px solid #00ff41}
-body.matrix-theme .menubar,body.matrix-theme footer span{background:#000!important;color:#00ff41!important;border-color:#008f11!important}
-body.matrix-theme .menubar button,body.matrix-theme button{color:#00ff41!important}
-body.matrix-theme .menubar button:hover,body.matrix-theme #levelGrid button.current{background:#003b0b!important;color:#b5ffbf!important}
-body.matrix-theme .board-shell{background:rgba(0,0,0,.68)!important;border:1px solid #008f11!important}
-body.matrix-theme #board,body.matrix-theme #solutionBoard{background:transparent!important}
-body.matrix-theme .message,body.matrix-theme .top,body.matrix-theme footer{color:#00ff41!important}
-body.matrix-theme dialog{background:#001b08!important;color:#00ff41!important;border-color:#00ff41!important}
-body.matrix-theme .dlg-title{background:#003b0b!important;color:#00ff41!important}
-body.matrix-theme .dlg-content input{background:#000!important;color:#00ff41!important;border-color:#008f11!important}
-body.matrix-theme .game-options button,body.matrix-theme .dialog-actions button,body.matrix-theme .solution-controls button,body.matrix-theme #levelGrid button{background:#001b08!important;color:#00ff41!important;border-color:#008f11!important}
-body.matrix-theme .about-content a{color:#7dff91!important}
-body.matrix-theme .dropdown-menu{background:#001b08!important;border-color:#00ff41!important}
+#matrixRain{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:none;background:#000}
+body.matrix-theme .window{position:relative;z-index:1;background:rgba(0,0,0,.72)!important}
+body.matrix-theme .content{background:rgba(0,0,0,.72)!important}
+body.matrix-theme .board-shell{position:relative;z-index:1}
+body.matrix-theme .tile{position:relative;z-index:2}
